@@ -1,0 +1,145 @@
+.signup-container {
+  min-height: 70vh;
+  /* background: #f4f6f9; */
+  display: flex;
+  justify-content: left;
+  padding: 30px 50px;
+  font-family: Arial, sans-serif;
+  width: 40%;
+}
+
+.signup-card {
+  width: 800px;
+  background: #ffffff;
+  padding: 25px 30px;
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Header */
+.signup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.signup-header h2 {
+  font-size: 18px;
+  color: #1e3a8a;
+}
+
+.signin-link {
+  color: #e26d21;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* Info */
+.info-box {
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 12px;
+  margin-bottom: 15px;
+  background: #fafafa;
+}
+
+.info-box p {
+  margin: 4px 0;
+}
+
+/* Form */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 5px;
+  color: #1e3a8a;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* Error */
+.error {
+  font-size: 12px;
+  color: red;
+}
+
+/* Info strip */
+.info-strip {
+  background: #dbeef7;
+  padding: 10px;
+  font-size: 12px;
+  margin: 15px 0;
+}
+
+/* Mobile */
+.mobile-row {
+  display: flex;
+  gap: 10px;
+}
+
+.mobile-row select {
+  width: 180px;
+}
+
+/* Captcha */
+.captcha-section {
+  width: 300px;
+  margin-top: 15px;
+}
+
+.captcha-box {
+  background: #1e3a8a;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+}
+
+.refresh {
+  cursor: pointer;
+}
+
+/* Submit */
+.submit-btn {
+  margin-top: 20px;
+  padding: 8px 20px;
+  background: #e26d21;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.submit-btn:hover {
+  background: #c95f1d;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .signup-card {
+    width: 95%;
+  }
+
+  .mobile-row {
+    flex-direction: column;
+  }
+
+  .captcha-section {
+    width: 100%;
+  }
+}

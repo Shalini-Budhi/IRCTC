@@ -1,0 +1,102 @@
+/* ===== Base Styles (Desktop) ===== */
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+  font-family: Arial, sans-serif;
+}
+
+.logo {
+  height: 70px;
+  width: 70px;
+}
+
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 70%;
+}
+
+.nav-center a {
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.nav-center a.active {
+  color: #d32f2f;
+  border-bottom: 2px solid #d32f2f;
+  padding-bottom: 4px;
+}
+
+.nav-right {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* ===== Tablet (max-width: 1024px) ===== */
+@media (max-width: 1024px) {
+  .nav-center {
+    gap: 15px;
+  }
+
+  .nav-center a {
+    font-size: 18px;
+  }
+
+  .logo {
+    height: 60px;
+    width: 60px;
+  }
+}
+
+/* ===== Mobile (max-width: 768px) ===== */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+
+  .nav-center {
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+
+  .nav-center a {
+    font-size: 16px;
+  }
+
+  .nav-right {
+    font-size: 13px;
+  }
+}
+
+/* ===== Small Mobile (max-width: 480px) ===== */
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-center {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .nav-center a {
+    font-size: 15px;
+  }
+
+  .logo {
+    height: 55px;
+    width: 55px;
+  }
+}

@@ -1,0 +1,186 @@
+/* ===============================
+   DESKTOP (Default)
+================================ */
+.dashboard {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  padding: 40px;
+
+  background-image: url("../../assets/Images/Train.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Booking Card */
+.booking-box {
+  width: 420px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 25px;
+  border-radius: 6px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  padding: 8px 14px;
+  border: none;
+  background: #1e3a8a;
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.tabs button.active {
+  background: #0f172a;
+}
+
+/* Title */
+.booking-box h2 {
+  color: #1e3a8a;
+  margin-bottom: 15px;
+}
+
+/* Form */
+.form-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.form-row input,
+.form-row select {
+  flex: 1;
+  padding: 9px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* Checkbox */
+.checkbox-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin: 15px 0;
+}
+
+/* Button */
+.search-btn {
+  width: 100%;
+  padding: 11px;
+  background: #f97316;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.search-btn:hover {
+  background: #ea580c;
+}
+
+/* Right Text */
+.railway-info {
+  margin-left: auto;
+  text-align: right;
+  color: white;
+}
+
+.railway-info h1 {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.railway-info p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+/* ===============================
+   TABLET (max-width: 1024px)
+================================ */
+@media (max-width: 1024px) {
+  .dashboard {
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+  }
+
+  .booking-box {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .railway-info {
+    margin-left: 0;
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .railway-info h1 {
+    font-size: 36px;
+  }
+}
+
+/* ===============================
+   MOBILE (max-width: 768px)
+================================ */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 20px;
+    background-attachment: scroll; /* fix mobile issue */
+  }
+
+  .booking-box {
+    padding: 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .checkbox-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tabs {
+    flex-wrap: wrap;
+  }
+
+  .tabs button {
+    flex: 1;
+  }
+
+  .railway-info h1 {
+    font-size: 28px;
+  }
+
+  .railway-info p {
+    font-size: 14px;
+  }
+}
+
+/* ===============================
+   SMALL MOBILE (max-width: 480px)
+================================ */
+@media (max-width: 480px) {
+  .booking-box {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .search-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

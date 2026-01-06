@@ -4,56 +4,69 @@ import "./SignUp.css";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
-  const [userName, setUserName] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [mobile, setMobile] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [userSignUpDetails, setUserSignUpDetails] = useState({
+    userName: "",
+    fullName: "",
+    password: "",
+    email: "",
+    mobile: "",
+    loading: false,
+    error: "",
+  });
+
   const navigate = useNavigate();
 
-  
+  // Handle input change
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setUserSignUpDetails((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+
+    setUserSignUpDetails((prev) => ({
+      ...prev,
+      loading: true,
+      error: "",
+    }));
 
     const formData = {
-      UserName: userName,
-      FullName: fullName,
-      Password: password,
-      Email: email,
-      Mobile: mobile,
+      UserName: userSignUpDetails.userName,
+      FullName: userSignUpDetails.fullName,
+      Password: userSignUpDetails.password,
+      Email: userSignUpDetails.email,
+      Mobile: userSignUpDetails.mobile,
     };
 
     try {
-      setLoading(true);
+      await axios.post("http://localhost:3000/api/v1/register", formData, {
+        headers: { "Content-Type": "application/json" },
+      });
 
-      const response = await axios.post(
-        "http://localhost:3000/api/v1/register",
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      console.log("Response:", response.data);
       alert("User Registered Successfully 🎉");
-      navigate('/login')
+      navigate("/login");
 
-      // Clear form
-      setUserName("");
-      setFullName("");
-      setPassword("");
-      setEmail("");
-      setMobile("");
+      // Reset form
+      setUserSignUpDetails({
+        userName: "",
+        fullName: "",
+        password: "",
+        email: "",
+        mobile: "",
+        loading: false,
+        error: "",
+      });
     } catch (err) {
-      console.error(err);
-      setError(err.response?.data?.message || "Registration failed");
-    } finally {
-      setLoading(false);
+      setUserSignUpDetails((prev) => ({
+        ...prev,
+        error: err.response?.data?.message || "Registration failed",
+        loading: false,
+      }));
     }
   };
 
@@ -67,41 +80,39 @@ const SignUp = () => {
 
         <div className="info-box">
           <p>1. Garbage / Junk values in profile may lead to deactivation.</p>
-          <p>
-            2. ARP booking allowed only after 4 days from registration.
-          </p>
+          <p>2. ARP booking allowed only after 4 days from registration.</p>
         </div>
 
         <form onSubmit={handleSubmit}>
-          {/* User Name */}
           <div className="form-group">
             <label>User Name *</label>
             <input
               type="text"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
+              name="userName"
+              value={userSignUpDetails.userName}
+              onChange={handleChange}
               required
             />
           </div>
 
-          {/* Full Name */}
           <div className="form-group">
             <label>Full Name *</label>
             <input
               type="text"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
+              name="fullName"
+              value={userSignUpDetails.fullName}
+              onChange={handleChange}
               required
             />
           </div>
 
-          {/* Password */}
           <div className="form-group">
             <label>Password *</label>
             <input
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name="password"
+              value={userSignUpDetails.password}
+              onChange={handleChange}
               required
             />
           </div>
@@ -110,18 +121,17 @@ const SignUp = () => {
             Invalid email ID may lead to deactivation.
           </div>
 
-          {/* Email */}
           <div className="form-group">
             <label>Email *</label>
             <input
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name="email"
+              value={userSignUpDetails.email}
+              onChange={handleChange}
               required
             />
           </div>
 
-          {/* Mobile */}
           <div className="form-group">
             <label>Mobile *</label>
             <div className="mobile-row">
@@ -130,19 +140,24 @@ const SignUp = () => {
               </select>
               <input
                 type="text"
-                placeholder="Mobile Number"
-                value={mobile}
-                onChange={(e) => setMobile(e.target.value)}
+                name="mobile"
+                value={userSignUpDetails.mobile}
+                onChange={handleChange}
                 required
               />
             </div>
           </div>
 
-          {/* Error Message */}
-          {error && <p className="error-text">{error}</p>}
+          {userSignUpDetails.error && (
+            <p className="error">{userSignUpDetails.error}</p>
+          )}
 
-          <button type="submit" className="submit-btn" disabled={loading}>
-            {loading ? "Registering..." : "Submit"}
+          <button
+            type="submit"
+            className="submit-btn"
+            disabled={userSignUpDetails.loading}
+          >
+            {userSignUpDetails.loading ? "Registering..." : "Submit"}
           </button>
         </form>
       </div>

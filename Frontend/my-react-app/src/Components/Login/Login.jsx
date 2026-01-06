@@ -6,50 +6,55 @@ import "./Login.css";
 const Login = () => {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [loginDetails, setLoginDetails] = useState({
+    email: "",
+    password: "",
+    showPassword: false,
+    loading: false,
+    error: "",
+  });
 
   const handleRegister = () => {
     navigate("/signUp");
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setLoginDetails((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+
+    setLoginDetails((prev) => ({
+      ...prev,
+      loading: true,
+      error: "",
+    }));
 
     try {
-      setLoading(true);
-
       const response = await axios.post(
         "http://localhost:3000/api/v1/login",
         {
-          Email: email,
-          Password: password,
+          Email: loginDetails.email,
+          Password: loginDetails.password,
         },
         {
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
         }
       );
 
-      console.log("Login Response:", response.data);
-
       alert("Login Successful ✅");
-
-      // Example (use later if you add JWT)
-      // localStorage.setItem("token", response.data.token);
-
-      navigate("/"); // redirect after login
-
+      navigate("/");
     } catch (err) {
-      console.error(err);
-      setError(err.response?.data?.message || "Login failed");
-    } finally {
-      setLoading(false);
+      setLoginDetails((prev) => ({
+        ...prev,
+        error: err.response?.data?.message || "Login failed",
+        loading: false,
+      }));
     }
   };
 
@@ -64,8 +69,9 @@ const Login = () => {
             <label>Email</label>
             <input
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name="email"
+              value={loginDetails.email}
+              onChange={handleChange}
               required
             />
           </div>
@@ -74,14 +80,20 @@ const Login = () => {
           <div className="input-group password-group">
             <label>Password</label>
             <input
-              type={showPassword ? "text" : "password"}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              type={loginDetails.showPassword ? "text" : "password"}
+              name="password"
+              value={loginDetails.password}
+              onChange={handleChange}
               required
             />
             <span
               className="eye"
-              onClick={() => setShowPassword(!showPassword)}
+              onClick={() =>
+                setLoginDetails((prev) => ({
+                  ...prev,
+                  showPassword: !prev.showPassword,
+                }))
+              }
             >
               👁
             </span>
@@ -89,11 +101,16 @@ const Login = () => {
 
           <p className="forgot">FORGOT ACCOUNT DETAILS?</p>
 
-          {/* Error message */}
-          {error && <p className="error-text">{error}</p>}
+          {loginDetails.error && (
+            <p className="error-text">{loginDetails.error}</p>
+          )}
 
-          <button type="submit" className="sign-in" disabled={loading}>
-            {loading ? "Signing In..." : "SIGN IN"}
+          <button
+            type="submit"
+            className="sign-in"
+            disabled={loginDetails.loading}
+          >
+            {loginDetails.loading ? "Signing In..." : "SIGN IN"}
           </button>
         </form>
 

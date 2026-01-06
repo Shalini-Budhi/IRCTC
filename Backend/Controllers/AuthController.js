@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 const Register = async(req,res) =>{
   try {
     const{UserName,FullName,Password,Email,Mobile} = req.body
-    if(!UserName || !FullName || !Password || !Email || !Mobile){
+    if(!(UserName || FullName || Password || Email || Mobile)){
       return res.status(404).json({
         message : "Please Fill The All Details"
       })
@@ -39,7 +39,7 @@ const Login = async(req,res) =>{
   try {
     const {Email,Password} = req.body
 
-    if(!Email || !Password){
+    if(!(Email || Password)){
        return res.status(400).json({
         message:"Please Enter Email and Password...."
        })

@@ -1,7 +1,7 @@
 .login-container {
   min-height: 100vh;
   display: flex;
-  justify-content: left;
+  justify-content: flex-start;
   align-items: center;
   background: #f4f6f9;
   font-family: Arial, sans-serif;
@@ -25,7 +25,6 @@
   padding-bottom: 5px;
 }
 
-/* Inputs */
 .input-group {
   display: flex;
   flex-direction: column;
@@ -47,7 +46,6 @@
   font-size: 14px;
 }
 
-/* Password */
 .password-group {
   position: relative;
 }
@@ -55,12 +53,11 @@
 .eye {
   position: absolute;
   right: 5px;
-  top: 30px;
+  top: 32px;
   cursor: pointer;
   font-size: 16px;
 }
 
-/* Forgot */
 .forgot {
   font-size: 13px;
   color: #1e40af;
@@ -68,37 +65,12 @@
   margin-bottom: 15px;
 }
 
-/* Captcha */
-.captcha-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #1e3a8a;
-  color: #fff;
-  padding: 12px;
+.error-text {
+  color: red;
+  font-size: 13px;
   margin-bottom: 10px;
 }
 
-.captcha-text {
-  font-size: 22px;
-  letter-spacing: 4px;
-}
-
-.refresh {
-  cursor: pointer;
-  font-size: 18px;
-}
-
-/* OTP */
-.otp {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  margin: 15px 0;
-}
-
-/* Buttons */
 .sign-in {
   width: 100%;
   padding: 12px;
@@ -110,8 +82,9 @@
   border-radius: 4px;
 }
 
-.sign-in:hover {
-  background: #c95f1d;
+.sign-in:disabled {
+  background: #ccc;
+  cursor: not-allowed;
 }
 
 .bottom-buttons {
@@ -127,9 +100,27 @@
   background: #1e3a8a;
   color: white;
   cursor: pointer;
-  font-size: 14px;
 }
 
-.bottom-buttons button:hover {
-  background: #162c6a;
+/* ---------- MEDIA QUERIES ---------- */
+
+@media (max-width: 768px) {
+  .login-container {
+    justify-content: center;
+    padding-left: 0;
+  }
+
+  .login-card {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 20px;
+  }
+
+  .sign-in {
+    font-size: 14px;
+  }
 }

@@ -1,13 +1,18 @@
+/* =========================
+   Main Container
+========================= */
 .signup-container {
   min-height: 70vh;
-  /* background: #f4f6f9; */
   display: flex;
-  justify-content: left;
+  justify-content: flex-start;
   padding: 30px 50px;
   font-family: Arial, sans-serif;
-  width: 40%;
+  background: #f4f6f9;
 }
 
+/* =========================
+   Card
+========================= */
 .signup-card {
   width: 800px;
   background: #ffffff;
@@ -16,7 +21,9 @@
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Header */
+/* =========================
+   Header
+========================= */
 .signup-header {
   display: flex;
   justify-content: space-between;
@@ -35,7 +42,9 @@
   cursor: pointer;
 }
 
-/* Info */
+/* =========================
+   Info Box
+========================= */
 .info-box {
   border: 1px solid #ccc;
   padding: 10px;
@@ -48,7 +57,9 @@
   margin: 4px 0;
 }
 
-/* Form */
+/* =========================
+   Form
+========================= */
 .form-group {
   margin-bottom: 15px;
 }
@@ -67,15 +78,17 @@
   padding: 8px;
   border: 1px solid #ccc;
   font-size: 14px;
+  outline: none;
 }
 
-/* Error */
-.error {
-  font-size: 12px;
-  color: red;
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #1e3a8a;
 }
 
-/* Info strip */
+/* =========================
+   Info Strip
+========================= */
 .info-strip {
   background: #dbeef7;
   padding: 10px;
@@ -83,7 +96,9 @@
   margin: 15px 0;
 }
 
-/* Mobile */
+/* =========================
+   Mobile Row
+========================= */
 .mobile-row {
   display: flex;
   gap: 10px;
@@ -93,28 +108,18 @@
   width: 180px;
 }
 
-/* Captcha */
-.captcha-section {
-  width: 300px;
-  margin-top: 15px;
+/* =========================
+   Error Message
+========================= */
+.error {
+  font-size: 12px;
+  color: red;
+  margin-top: 8px;
 }
 
-.captcha-box {
-  background: #1e3a8a;
-  color: white;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 18px;
-  letter-spacing: 3px;
-  margin-bottom: 8px;
-}
-
-.refresh {
-  cursor: pointer;
-}
-
-/* Submit */
+/* =========================
+   Submit Button
+========================= */
 .submit-btn {
   margin-top: 20px;
   padding: 8px 20px;
@@ -123,14 +128,29 @@
   color: white;
   cursor: pointer;
   border-radius: 3px;
+  font-size: 14px;
 }
 
 .submit-btn:hover {
   background: #c95f1d;
 }
 
-/* Responsive */
+.submit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* =========================
+   MEDIA QUERIES
+========================= */
+
+/* -------- Tablet -------- */
 @media (max-width: 900px) {
+  .signup-container {
+    padding: 20px;
+    justify-content: center;
+  }
+
   .signup-card {
     width: 95%;
   }
@@ -139,7 +159,31 @@
     flex-direction: column;
   }
 
-  .captcha-section {
+  .mobile-row select {
     width: 100%;
+  }
+}
+
+/* -------- Mobile -------- */
+@media (max-width: 600px) {
+  .signup-container {
+    padding: 15px;
+  }
+
+  .signup-card {
+    padding: 20px;
+  }
+
+  .signup-header h2 {
+    font-size: 16px;
+  }
+
+  .signin-link {
+    font-size: 12px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 10px;
   }
 }

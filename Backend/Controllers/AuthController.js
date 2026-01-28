@@ -54,7 +54,7 @@ const Login = async(req,res) =>{
     const token = jwt.sign({
       id:user._id,username:user.UserName
     },
-    process.env.MYSCERETEKEY,{expiresIn:'2d'}
+    process.env.MYSCERETEKEY,{expiresIn:'1d'}
   )
   return res.status(200).json({
     message:"User login successfully Completed....",

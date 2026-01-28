@@ -42,20 +42,6 @@
   cursor: pointer;
 }
 
-/* =========================
-   Info Box
-========================= */
-.info-box {
-  border: 1px solid #ccc;
-  padding: 10px;
-  font-size: 12px;
-  margin-bottom: 15px;
-  background: #fafafa;
-}
-
-.info-box p {
-  margin: 4px 0;
-}
 
 /* =========================
    Form
@@ -86,15 +72,6 @@
   border-color: #1e3a8a;
 }
 
-/* =========================
-   Info Strip
-========================= */
-.info-strip {
-  background: #dbeef7;
-  padding: 10px;
-  font-size: 12px;
-  margin: 15px 0;
-}
 
 /* =========================
    Mobile Row

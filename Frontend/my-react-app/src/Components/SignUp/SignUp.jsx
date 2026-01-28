@@ -44,7 +44,7 @@ const SignUp = () => {
     };
 
     try {
-      await axios.post("http://localhost:3000/api/v1/register", formData, {
+      await axios.post("http://localhost:6200/api/v1/register", formData, {
         headers: { "Content-Type": "application/json" },
       });
 
@@ -76,11 +76,6 @@ const SignUp = () => {
         <div className="signup-header">
           <h2>Create Your IRCTC Account</h2>
           <span className="signin-link">SIGN IN</span>
-        </div>
-
-        <div className="info-box">
-          <p>1. Garbage / Junk values in profile may lead to deactivation.</p>
-          <p>2. ARP booking allowed only after 4 days from registration.</p>
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -115,10 +110,6 @@ const SignUp = () => {
               onChange={handleChange}
               required
             />
-          </div>
-
-          <div className="info-strip">
-            Invalid email ID may lead to deactivation.
           </div>
 
           <div className="form-group">

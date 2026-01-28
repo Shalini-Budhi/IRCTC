@@ -37,7 +37,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v1/login",
+        "http://localhost:6200/api/v1/login",
         {
           Email: loginDetails.email,
           Password: loginDetails.password,
